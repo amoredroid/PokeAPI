@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>PokemonAdapter.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+PokemonAdapter.kt</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.genson.amor.pokeapi 
+ 
+import android.support.v7.widget.RecyclerView 
+import android.view.LayoutInflater 
+import android.view.View 
+import android.view.ViewGroup 
+import com.squareup.picasso.Picasso 
+import kotlinx.android.synthetic.main.row_main.view.* 
+ 
+</span><span class="s2">/**</span><span class="s1"> 
+ </span><span class="s2">* Created by Genson on 08/03/2018.</span><span class="s1"> 
+ </span><span class="s2">*/</span><span class="s1"> 
+ 
+</span><span class="s0">class </span><span class="s1">PokemonAdapter(</span><span class="s0">val </span><span class="s1">pokemonList: ArrayList&lt;Pokemon&gt;): RecyclerView.Adapter&lt;CustomViewHolder&gt;() { 
+ 
+    override </span><span class="s0">fun </span><span class="s1">onCreateViewHolder(parent: ViewGroup?</span><span class="s0">, </span><span class="s1">viewType: Int): CustomViewHolder { 
+        </span><span class="s0">val </span><span class="s1">layoutInflater = LayoutInflater.from(parent?.context) 
+        </span><span class="s0">val </span><span class="s1">cellForRow = layoutInflater.inflate(R.layout.row_main</span><span class="s0">, </span><span class="s1">parent</span><span class="s0">, false</span><span class="s1">) 
+        </span><span class="s0">return </span><span class="s1">CustomViewHolder(cellForRow)  } 
+ 
+    override </span><span class="s0">fun </span><span class="s1">getItemCount(): Int { 
+        </span><span class="s0">return </span><span class="s1">pokemonList.size 
+    } 
+ 
+    override </span><span class="s0">fun </span><span class="s1">onBindViewHolder(holder: CustomViewHolder?</span><span class="s0">, </span><span class="s1">position: Int) { 
+        </span><span class="s0">val </span><span class="s1">pokemon: Pokemon = pokemonList[position] 
+        holder?.view?.pokeName?.text = pokemon.name 
+        </span><span class="s0">val </span><span class="s1">pokemonImage = holder?.view?.pokeImgView 
+        Picasso.with(holder?.view?.context).load(pokemon.sprites.front_default).into(pokemonImage) 
+ 
+    } 
+ 
+} 
+ 
+</span><span class="s0">class </span><span class="s1">CustomViewHolder (</span><span class="s0">val </span><span class="s1">view: View): RecyclerView.ViewHolder(view){ 
+ 
+}</span></pre>
+</body>
+</html>
